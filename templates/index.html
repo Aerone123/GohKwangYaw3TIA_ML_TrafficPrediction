@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Density Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Traffic Density AI</h1>
+        <form id="predictionForm">
+            <div class="form-group col-6">
+                <input type="datetime-local" id="datetime" name="datetime" required>
+                <label for="datetime">DATE & CYCLE</label>
+            </div>
+
+            <div class="form-group col-4">
+                <input type="number" step="0.1" id="temperature" name="temperature" required placeholder=" ">
+                <label for="temperature">TEMP (°C)</label>
+            </div>
+
+            <div class="form-group col-2">
+                <input type="number" step="0.1" id="humidity" name="humidity" required placeholder=" ">
+                <label for="humidity">HUMIDITY (%)</label>
+            </div>
+
+            <div class="form-group col-2">
+                <input type="number" step="0.1" id="wind_speed" name="wind_speed" required placeholder=" ">
+                <label for="wind_speed">WIND</label>
+            </div>
+
+            <div class="form-group col-4">
+                <input type="number" step="0.1" id="clouds_all" name="clouds_all" required placeholder=" ">
+                <label for="clouds_all">CLOUD COVERAGE</label>
+            </div>
+
+            <div class="form-group col-6">
+                <select id="weather_type" name="weather_type" required>
+                    <option value="" disabled selected>SELECT TYPE</option>
+                    <option value="Clouds">CLOUDS</option>
+                    <option value="Clear">CLEAR</option>
+                    <option value="Rain">RAIN</option>
+                    <option value="Drizzle">DRIZZLE</option>
+                    <option value="Mist">MIST</option>
+                    <option value="Haze">HAZE</option>
+                    <option value="Fog">FOG</option>
+                    <option value="Thunderstorm">STORM</option>
+                    <option value="Snow">SNOW</option>
+                    <option value="Squall">SQUALL</option>
+                    <option value="Smoke">SMOKE</option>
+                </select>
+                <label for="weather_type" style="display:none;">WEATHER TYPE</label>
+            </div>
+
+            <button type="reset" id="resetBtn" class="col-3"
+                style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid white;">RESET</button>
+            <button type="submit" id="submitBtn" class="col-3">PREDICT</button>
+        </form>
+
+        <div id="result" class="hidden">
+            ESTIMATED DENSITY:<br>
+            <span id="predictionValue"></span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
